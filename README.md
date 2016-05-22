@@ -7,6 +7,6 @@ Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/
 
 + Voice command issued on command
 
-        curl http://localhost:_port_/alert 
+        curl http://localhost:port/alert 
 
 + Sonos group set in rc.local
