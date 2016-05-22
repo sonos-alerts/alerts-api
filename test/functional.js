@@ -20,7 +20,7 @@ describe('Functional Tests', function () {
 
     log.console.disable();
 
-    server = api();
+    server = api('Dev');
     server.listen(port, done);
   });
 
@@ -53,8 +53,8 @@ describe('Functional Tests', function () {
     var sonos;
 
     before(function (done) {   
-      sonos = nock('http://localhost:5005')
-              .get('/Dev/say/hello')
+      sonos = nock('http://localhost:5010')
+              .get('/Dev/say/website%20down')
               .reply(200);
       
       request.post({
@@ -74,7 +74,7 @@ describe('Functional Tests', function () {
       assert.strictEqual(response.statusCode, 200);
     });
     
-    it('should say hello on sonos', function () {
+    it('should say website down on sonos', function () {
       assert.strictEqual(sonos.isDone(), true);
     });
   });
