@@ -10,7 +10,7 @@ module.exports = function () {
   
   app.use('/alert', function (req, res, next) {
     res.status(200).send();
-    http.get('http://localhost:5005/Dev/say/hello');
+    http.get('http://localhost:5005/Dev/say/alert');
   });
 
   app.use(function (req, res, next) {
