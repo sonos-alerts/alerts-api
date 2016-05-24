@@ -5,8 +5,17 @@ Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/
 
 ###### Iteration 1. - 
 
-+ Voice command issued on command
+Plug pi into monitor, ifconfog to find out IP address
 
-        curl http://localhost:port/alert 
+to modify which speaker to alert on:
+1) [command] ssh pi@ipaddress
+2) [command] sudo nano /etc/rc.local
+3) [instruction] change to relevant sonos speaker
+4) [keypress] ctrl+x
+5) [keypress] y
+6) [keypress] enter
+7) [command] sudo reboot
 
-+ Sonos group set in rc.local
+to make alerts happen manually with curl:
+1) [command] ssh pi@ipaddress
+2) [command] curl http://localhost:3000/alert
