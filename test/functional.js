@@ -3,13 +3,15 @@ var assert = require('assert'),
     log = require('../src/logger'),
     api = require('../src/api'),
     request = require('request'),
-    nock = require('nock');
+    nock = require('nock'),
+    randomString = require('random-string');
 
 describe('Functional Tests', function () {
   var urlBase;
   var urlPath;
   var urlFull;
   var server;
+  var speaker;
   
   before(function (done) {
     var port = process.env.PORT || 3000;
@@ -17,10 +19,11 @@ describe('Functional Tests', function () {
     urlBase = 'http://127.0.0.1:' + port;
     urlPath = '/alert';
     urlFull = url.resolve(urlBase, urlPath);
+    speaker = randomString();
 
     log.console.disable();
 
-    server = api('Dev');
+    server = api(speaker);
     server.listen(port, done);
   });
 
@@ -54,7 +57,7 @@ describe('Functional Tests', function () {
 
     before(function (done) {   
       sonos = nock('http://localhost:5010')
-              .get('/Dev/say/website%20down')
+              .get('/' + speaker + '/say/website%20down')
               .reply(200);
       
       request.post({
