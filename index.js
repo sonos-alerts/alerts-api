@@ -1,11 +1,13 @@
 var log = require('./src/logger'),
-    api = require('./src/api');
+    api = require('./src/api'),
+    settings = require('./src/settings');
     
-var server = api();
+setting.load(start);
 
-var port = process.env.PORT || 3000;
-var ip = process.env.IP || null;
+function start() {
+  var server = api();
 
-server.listen(port, ip, function () {
-  log.info('Server ready at %s:%d', ip || '0.0.0.0', port);
-});
+  server.listen(process.env.PORT, process.env.IP, function () {
+    log.info('Server ready at %s:%d', process.env.IP || '0.0.0.0', process.env.PORT);
+  });
+}

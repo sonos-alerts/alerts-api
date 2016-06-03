@@ -1,0 +1,6 @@
+{
+  "port":"1234",
+  "ip":null,
+  "sonosGroup":"testgroup",
+  "sonosUrl":"http://localhost:4567"
+}
