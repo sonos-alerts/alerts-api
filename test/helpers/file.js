@@ -20,7 +20,10 @@ module.exports.copy = function (source, target, callback) {
 
   function done(error) {
     if (!finished) {
-      if (error) { console.log('unable to copy file'); }
+      if (error) { 
+        console.log('unable to copy file'); 
+      }
+      
       finished = true;
       callback();
     }
@@ -29,7 +32,10 @@ module.exports.copy = function (source, target, callback) {
 
 module.exports.delete = function (path, callback) {
   fs.unlink(path, function (error) {
-    if(error) { console.log('unable to delete file'); }
+    if(error) { 
+      console.log('unable to delete file'); 
+    }
+    
     callback();
   });
 };
