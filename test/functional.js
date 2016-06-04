@@ -3,24 +3,30 @@ var assert = require('assert'),
     log = require('../src/logger'),
     api = require('../src/api'),
     request = require('request'),
-    nock = require('nock');
+    nock = require('nock'),
+    randomString = require('random-string'),
+    randomInteger = require('random-integer');
 
 describe('Functional Tests', function () {
   var urlBase;
   var urlPath;
   var urlFull;
   var server;
+  var sonosGroup;
+  var sonosUrl;
   
   before(function (done) {
-    var port = process.env.PORT || 3000;
+    sonosUrl = process.env.SONOSURL = 'http://localhost:' + randomInteger(3000,10000);
+    sonosGroup = process.env.SONOSGROUP = randomString();
     
+    var port = process.env.PORT = randomInteger(3000,10000);    
     urlBase = 'http://127.0.0.1:' + port;
     urlPath = '/alert';
     urlFull = url.resolve(urlBase, urlPath);
 
     log.console.disable();
 
-    server = api('Dev');
+    server = api();
     server.listen(port, done);
   });
 
@@ -53,8 +59,8 @@ describe('Functional Tests', function () {
     var sonos;
 
     before(function (done) {   
-      sonos = nock('http://localhost:5010')
-              .get('/Dev/say/website%20down')
+      sonos = nock(sonosUrl)
+              .get('/' + sonosGroup + '/say/website%20down')
               .reply(200);
       
       request.post({

@@ -1,8 +1,7 @@
 var log = require('./src/logger'),
     api = require('./src/api');
-
-var sonosGroup = process.argv[2];
-var server = api(sonosGroup);
+    
+var server = api();
 
 var port = process.env.PORT || 3000;
 var ip = process.env.IP || null;
