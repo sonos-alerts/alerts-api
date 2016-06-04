@@ -1,38 +1,41 @@
 var assert = require('assert'),
     url = require('url'),
-    log = require('../src/logger'),
-    api = require('../src/api'),
     request = require('request'),
     nock = require('nock'),
-    randomString = require('random-string'),
-    randomInteger = require('random-integer');
+    path = require('path'),
+    log = require('../src/logger'),
+    api = require('../src/api'),
+    settings = require('../src/settings'),
+    file = require('./helpers/file');
 
 describe('Functional Tests', function () {
   var urlBase;
-  var urlPath;
   var urlFull;
   var server;
-  var sonosGroup;
-  var sonosUrl;
+  var configDestination;
   
   before(function (done) {
-    sonosUrl = process.env.SONOSURL = 'http://localhost:' + randomInteger(3000,10000);
-    sonosGroup = process.env.SONOSGROUP = randomString();
-    
-    var port = process.env.PORT = randomInteger(3000,10000);    
+    var port = '1234';    
     urlBase = 'http://127.0.0.1:' + port;
-    urlPath = '/alert';
-    urlFull = url.resolve(urlBase, urlPath);
+    urlFull = url.resolve(urlBase, '/alert');
 
     log.console.disable();
-
-    server = api();
-    server.listen(port, done);
+    
+    configDestination = path.join(process.cwd(), 'config.json');
+    
+    file.copy('./test/samples/config.json', configDestination, startApi);
+    
+    function startApi() {
+      settings.load(function() {
+        server = api();
+        server.listen(port, done)
+      });
+    }
   });
 
   after(function (done) {
     server.close(function () {
-      done();
+      file.delete(configDestination, done);
     });
   });
   
@@ -59,8 +62,8 @@ describe('Functional Tests', function () {
     var sonos;
 
     before(function (done) {   
-      sonos = nock(sonosUrl)
-              .get('/' + sonosGroup + '/say/website%20down')
+      sonos = nock('http://localhost:4567')
+              .get('/testgroup/say/website%20down')
               .reply(200);
       
       request.post({
