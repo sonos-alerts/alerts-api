@@ -4,7 +4,7 @@
 
 # Alerts API
 
-Works in conjunction with [<img src="http://i66.tinypic.com/16jiq8o.png">](https://github.com/sonos-alerts/node-sonos-http-api) [node-sonos-http-api](https://github.com/sonos-alerts/node-sonos-http-api) to send alert messages across sonos. 
+Works in conjunction with [<img src="http://i65.tinypic.com/1zd68ae.png">](https://github.com/sonos-alerts/node-sonos-http-api) [node-sonos-http-api](https://github.com/sonos-alerts/node-sonos-http-api) to send alert messages across sonos. 
 
 ## Purpose of the alerts-api 
 
@@ -31,7 +31,7 @@ Works in conjunction with [<img src="http://i66.tinypic.com/16jiq8o.png">](https
 2. [command] curl http://localhost:3000/alert
 
 
-#### Integrating with DataDog [<img src="http://i68.tinypic.com/20jfyty.png">](https://www.datadoghq.com/)
+#### Integrating with DataDog [<img src="http://i66.tinypic.com/24ky26v.png">](https://www.datadoghq.com/)
 
 1. [command] ssh pi@ipaddress
 2. [command] ngrok http -subdomain=<subdomainName> 080
