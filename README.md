@@ -32,3 +32,11 @@ Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/
 
 
 #### Integrating with DataDog
+
+1. [command] ssh pi@ipaddress
+2. [command] ngrok http -subdomain=<subdomainName> 080
+3. [instruction] copy http forwarding url i.e. http://<subdomainName>.ngrok.io
+4. [instruction] go to datadog integrations, configure webhooks, replace existing url with new one (remember to make sure /alert is still on the end), save new configuration
+5. [instruction] go to datadog events, post a status update of "@webhook-<nameOfWebhook> <message>" 
+
+See [ngrok instructions for setting up custom and ngrok subdomains](https://ngrok.com/docs#subdomain)
