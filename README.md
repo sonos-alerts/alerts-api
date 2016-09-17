@@ -2,9 +2,9 @@
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1b09cff1b095a190f222)
 
-# alerts-api
+# Alerts API
 
-Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/node-sonos-http-api) to send alert messages across sonos. 
+Works in conjunction with [<img src="http://i66.tinypic.com/16jiq8o.png">](https://github.com/sonos-alerts/node-sonos-http-api) [node-sonos-http-api](https://github.com/sonos-alerts/node-sonos-http-api) to send alert messages across sonos. 
 
 ## Purpose of the alerts-api 
 
@@ -31,7 +31,7 @@ Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/
 2. [command] curl http://localhost:3000/alert
 
 
-#### Integrating with DataDog
+#### Integrating with DataDog [<img src="http://i68.tinypic.com/20jfyty.png">](https://www.datadoghq.com/)
 
 1. [command] ssh pi@ipaddress
 2. [command] ngrok http -subdomain=<subdomainName> 080
