@@ -20,7 +20,7 @@ Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/
 1. [command] ssh pi@ipaddress
 2. [command] sudo nano /etc/rc.local
 3. [instruction] change to relevant sonos speaker
-4  [keypress] ctrl+x
+4. [keypress] ctrl+x
 5. [keypress] y
 6. [keypress] enter
 7. [command] sudo reboot
