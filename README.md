@@ -6,16 +6,16 @@
 
 Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/node-sonos-http-api) to send alert messages across sonos. 
 
-### Purpose of the alerts-api 
+## Purpose of the alerts-api 
 
 + To play "website down" on sonos
 + Using ngrok you can also apply to monitoring agents such as Datadog making a set up webhook trigger the sound on sonos. This is single use and needs work to remove the ngrok element.
 
-### Instructions:
+## Instructions:
 
 + Plug pi into monitor, ifconfog to find out IP address
 
-+ **To modify which speaker to alert on:**
+#### To modify which speaker to alert on:
 
 1. [command] ssh pi@ipaddress
 2. [command] sudo nano /etc/rc.local
@@ -25,7 +25,10 @@ Works in conjunction with [node-sonos-http-api](https://github.com/sonos-alerts/
 6. [keypress] enter
 7. [command] sudo reboot
 
-+ **To make alerts happen manually with curl:**
+#### To make alerts happen manually with curl:
 
 1. [command] ssh pi@ipaddress
 2. [command] curl http://localhost:3000/alert
+
+
+#### Integrating with DataDog
